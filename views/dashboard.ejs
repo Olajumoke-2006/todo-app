@@ -1,7 +1,7 @@
-<h1>Todo Dashboard</h1>
+<h1>My Tasks</h1>
 
-<form action="/tasks" method="POST">
-  <input type="text" name="title" placeholder="New Task" required />
+<form method="POST" action="/tasks">
+  <input name="title" placeholder="New task" />
   <button>Add</button>
 </form>
 
@@ -10,17 +10,17 @@
 <a href="/tasks?status=all">All</a>
 
 <ul>
-  <% tasks.forEach(task => { %>
+  <% tasks.forEach(t => { %>
     <li>
-      <%= task.title %> - <%= task.status %>
+      <%= t.title %> - <%= t.status %>
 
-      <form action="/tasks/<%= task._id %>" method="POST">
+      <form method="POST" action="/tasks/<%= t._id %>">
         <select name="status">
-          <option value="pending">Pending</option>
-          <option value="completed">Completed</option>
-          <option value="deleted">Delete</option>
+          <option value="pending">pending</option>
+          <option value="completed">completed</option>
+          <option value="deleted">deleted</option>
         </select>
-        <button>Update</button>
+        <button>update</button>
       </form>
     </li>
   <% }) %>
